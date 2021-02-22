@@ -1,43 +1,11 @@
-from flask import Flask, render_template, jasonify
-import bcrypt
+import sys
+sys.path.insert(1, './handlers')
+from system_handlers import handler_ping
 
-app = Flask('__name__')
+def load_routes(app):
+    print(' * Loading Routes')
+    @app.route('/ping', methods=['GET'])
+    def ping():
+        return handler_ping()
 
-@app.route('/')
-def index():
-    return render_template('index.html', titulo = "Início")
-
-
-@app.route('/cadastro')
-def cadastro():
-    return jasonify("{'result': 'success'}")
-
-
-@app.route('/pagamento')
-def pagamento():
-    return 'pagamento'
-
-
-# @app.router('/login')
-# def login():
-#     pass
-@app.route('/autenticar')
-def autenticar():
-    if 'mestra'==request.form['senha']:
-        session['usuario_logado'] = request.form['usuario']
-        flash(request.form['usuario'] +'logou com sucesso')
-        return redirect('/')
-    else:
-        flash('Não logado, tente novamente')
-        return redirect('/login')
-
-
-@app.route('/compra')
-def compra():
-    return 'compra'
-
-
-app.run(debug=True)
-
-
-
+    return app
