@@ -1,13 +1,16 @@
 import flask
-import sqlite3
-from flask_sqlalchemy import sqlalchemy
-from routes import load_routes
+from server.routes import load_routes
+from database import connection
 
-def start_server():
+def start_server(config):
   print(' * Starting Server')
-  app = flask.Flask(__name__)
-  app.config["DEBUG"] = True
+  
+  server = {
+    'app': flask.Flask(__name__),
+    'db': connection.get_connection(config["db"])
+  }
+  server["app"].config["DEBUG"] = True
 
-  app = load_routes(app)
+  server = load_routes(server)
 
-  app.run()
+  server["app"].run()

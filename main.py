@@ -1,13 +1,22 @@
-import sys
+# import sys
+# sys.path.insert(0, './server')
 import json
 import os
-sys.path.insert(0, './server')
-from server import start_server
+from server.server import start_server
 
 def main():
     print(' * System Starting')
-    #  TODO: Carregar as consfiguracoes
+    # TODO: Carregar as consfiguracoes
+    configs = {
+        "db": {
+            "user": "root",
+            "password": "123456",
+            "host": "localhost",
+            "database": "pagarMe"
+        }
+    }
+
     # TODO: Carregar Server HTTP
-    start_server()
+    start_server(configs)
 
 main()
