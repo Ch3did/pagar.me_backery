@@ -1,22 +1,16 @@
-# import sys
-# sys.path.insert(0, './server')
-import json
-import os
-from server.server import start_server
+import flask
+from server.routes import load_routes
 
 def main():
-    print(' * System Starting')
-    # TODO: Carregar as consfiguracoes
-    configs = {
-        "db": {
-            "user": "root",
-            "password": "123456",
-            "host": "localhost",
-            "database": "pagarMe"
-        }
-    }
+    print(' * System Starting') 
+  
+    app = flask.Flask(__name__)
 
-    # TODO: Carregar Server HTTP
-    start_server(configs)
+    app.config["DEBUG"] = True
+
+    load_routes(app)
+
+    app.run()
+
 
 main()
