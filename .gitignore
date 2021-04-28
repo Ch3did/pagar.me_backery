@@ -1,4 +1,2 @@
-__pycache__
-sla.txt
-db.sqlite
-pagarme/
+__pycache__/
+.v_pbackery/
