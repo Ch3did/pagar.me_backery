@@ -1,2 +1,4 @@
 __pycache__/
 .v_pbackery/
+config.py
+.vscode/
