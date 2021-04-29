@@ -5,7 +5,11 @@ from database.conection import connection
 def main(engine):
     print(' * System Starting') 
     app = flask.Flask(__name__)
-    load_routes(app)
+    conn = {
+        'app':app,
+        'engine': engine
+    }
+    load_routes(conn)
     app.run(debug=True)
 
 
