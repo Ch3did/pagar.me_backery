@@ -1,7 +1,10 @@
+from views.system_views import handler_ping
 
-def load_routes(app):
+
+def load_routes(conn):
     print(' * Loading Routes')
-
+    app = conn['app']
+    engine  = conn['engine']
                                                          # System Routes
     #Home da API
     @app.route('/')
@@ -11,8 +14,7 @@ def load_routes(app):
     #Ping pra teste de conexão
     @app.route('/ping', methods=['GET'])
     def ping():
-        pass
-        #return handler_ping()
+        return handler_ping()
 
     #Cria a database para utilização da API
     @app.route('/create_db',methods=['GET'])
