@@ -1,10 +1,8 @@
-
-
 # Database configuration
 
-type = "postgresql"
+typedb = 'postgresql'
 host = 'localhost'
-database = 'pagarme.backery'
+database = 'pagarme_backery'
 user = 'postgres'
 password = '123456'
 
